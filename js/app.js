@@ -21,9 +21,13 @@ App.Jigokuno.reopenClass({
 
 App.searchController = Ember.ArrayController.create({
   query: null,
+  hits: null,
 
   content: function() {
-    return App.Jigokuno.search(this.get('query'));
+    var results = App.Jigokuno.search(this.get('query'));
+    this.set('hits', results.length > 0 ? results.length : null);
+
+    return results;
   }.property('query')
 });
 

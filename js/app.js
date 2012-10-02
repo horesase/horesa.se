@@ -21,7 +21,6 @@ App.searchController = Ember.ArrayController.create({
   query: null,
 
   content: function() {
-    console.log(this.get('query'));
     return App.Jigokuno.search(this.get('query'));
   }.property('query')
 });

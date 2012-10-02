@@ -12,7 +12,7 @@ App.Jigokuno.reopenClass({
     }
 
     return this.data.filter(function(item, index) {
-      return item.title.indexOf(query) >= 0; // FIXME
+      return item.title.indexOf(query) >= 0 || item.id == query; // FIXME
     });
   }
 });

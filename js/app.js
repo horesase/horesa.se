@@ -1,21 +1,32 @@
 var App = Ember.Application.create();
 
 App.Jigokuno = Ember.Object.extend({
+  titleLower: function() {
+    return this.get('title').toLowerCase();
+  }.property('title'),
+  characterLower: function() {
+    return this.get('character').toLowerCase();
+  }.property('character')
 });
 App.Jigokuno.reopenClass({
   data: Ember.A(window.boys.map(function(entry) {
     return App.Jigokuno.create(entry);
   })),
   search: function(query) {
-    if (query == "") {
+    if (!query || query == "") {
       return [];
     }
 
+    var self = this;
+    var queryLower = query.toLowerCase();
     return this.data.filter(function(item, index) {
-      return item.title.indexOf(query) >= 0
-          || item.character.indexOf(query) >= 0
+      return self.isSubstring(item.get('titleLower'), queryLower)
+          || self.isSubstring(item.get('characterLower'), queryLower)
           || item.id == query; // FIXME
     });
+  },
+  isSubstring: function(str, query) {
+    return str.indexOf(query) >= 0;
   }
 });
 

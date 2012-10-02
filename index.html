@@ -8,8 +8,19 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/screen.css">
+
+<script data-template-name="boy" type="text/x-handlebars">
+<div class="thumbnail boy-thumbnail">
+<img {{bindAttr src="image"}}>
+<p class="caption">
+<b>{{id}}</b>
+{{title}}
+</p>
+</div>
+</script>
 </head>
 <body>
+
 <script type="text/x-handlebars">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -27,9 +38,11 @@
   {{#if query}}
   <div class="alert alert-info">Searching '<strong>{{query}}</strong>'</div>
   {{/if}}
+  <ul class="thumbnails">
   {{#each controller}}
-    <img {{bindAttr src="image"}}>
+    {{view App.BoyView}}
   {{/each}}
+  </ul>
   {{/view}}
 </div>
 </script>

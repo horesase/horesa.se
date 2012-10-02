@@ -3,7 +3,9 @@ var App = Ember.Application.create();
 App.Jigokuno = Ember.Object.extend({
 });
 App.Jigokuno.reopenClass({
-  data: Ember.A(window.boys),
+  data: Ember.A(window.boys.map(function(entry) {
+    return App.Jigokuno.create(entry);
+  })),
   search: function(query) {
     if (query == "") {
       return [];
@@ -38,4 +40,10 @@ App.SearchFormView = Ember.View.extend({
 
 App.SearchView = Ember.View.extend({
   controller: App.searchController
+});
+
+App.BoyView = Ember.View.extend({
+  templateName: 'boy',
+  tagName: 'li',
+  classNames: 'span4'
 });

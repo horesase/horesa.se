@@ -3,9 +3,7 @@ var App = Ember.Application.create();
 App.Jigokuno = Ember.Object.extend({
 });
 App.Jigokuno.reopenClass({
-  data: Ember.A([
-    {id: 977, title: "これだけ", character: "ヤック(24)", image: "http://img.jigokuno.com/20121002_177891.gif"}
-  ]),
+  data: Ember.A(window.boys),
   search: function(query) {
     if (query == "") {
       return [];

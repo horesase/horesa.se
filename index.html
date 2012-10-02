@@ -27,7 +27,7 @@
     <div class="container">
       <a class="brand" href="/">horesa.se</a>
       {{#view App.SearchFormView}}
-        {{view Ember.TextField valueBinding="query"}}
+        {{view Ember.TextField classNames="search-query" valueBinding="query"}}
       {{/view}}
     </div>
   </div>

@@ -42,7 +42,7 @@
   {{/if}}
   <ul class="thumbnails">
   {{#each controller}}
-    {{view App.BoyView}}
+    {{view App.BoyView contentBinding="this"}}
   {{/each}}
   </ul>
   {{/view}}
@@ -51,6 +51,7 @@
 
   <script src="js/jquery-1.8.2.min.js"></script>
   <script src="js/handlebars-1.0.rc.1.js"></script>
+  <script src="js//ZeroClipboard.min.js"></script>
   <script src="js/ember-latest.js"></script>
   <script src="js/boys.js"></script>
   <script src="js/app.js"></script>

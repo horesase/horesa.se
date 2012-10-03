@@ -6,7 +6,10 @@ App.Jigokuno = Ember.Object.extend({
   }.property('title'),
   characterLower: function() {
     return this.get('character').toLowerCase();
-  }.property('character')
+  }.property('character'),
+  markdown: function() {
+    return this.get('image'); // FIXME
+  }.property('image')
 });
 App.Jigokuno.reopenClass({
   data: Ember.A(window.boys.map(function(entry) {
@@ -61,5 +64,23 @@ App.SearchView = Ember.View.extend({
 App.BoyView = Ember.View.extend({
   templateName: 'boy',
   tagName: 'li',
-  classNames: 'span4'
+  classNames: 'span4',
+  content: null,
+
+  eventManager: Ember.Object.create({
+    mouseEnter: function(e, view) {
+      var content = view.get('content');
+      var text = content.get('markdown');
+      App.clip.setText(text);
+      if (App.clipGlued) {
+        App.clip.reposition(e.target);
+      } else {
+        App.clip.glue(e.target);
+        App.clipGlued = true;
+      }
+    }
+  })
 });
+
+App.clip = new ZeroClipboard.Client();
+App.clipGlued = false;

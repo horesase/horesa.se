@@ -43,6 +43,12 @@
 
 <div class="container">
   {{#view App.SearchView}}
+  {{#unless query}}
+    <div class="hero-unit">
+      <h1>"Hore-sase" Github.</h1>
+      <p>Paste "hore-sase" boys on your projects. At the speed of light.</p>
+    </div>
+  {{/unless}}
   {{#if notFound}}
   <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>
   {{/if}}

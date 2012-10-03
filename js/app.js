@@ -94,7 +94,7 @@ App.BoyView = Ember.View.extend({
 App.message = Ember.Object.create({
   text: null,
 
-  notice: function(message) {
+  flash: function(message) {
     var self = this;
     self.set('text', message);
     setTimeout(function() {
@@ -108,7 +108,7 @@ App.message = Ember.Object.create({
 
 App.clip = new ZeroClipboard.Client();
 App.clip.addEventListener('complete', function(client, text) {
-  App.message.notice('Copied!');
+  App.message.flash('Copied!');
 });
 App.clipGlued = false;
 

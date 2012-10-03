@@ -98,8 +98,11 @@ App.message = Ember.Object.create({
     var self = this;
     self.set('text', message);
     setTimeout(function() {
-      self.set('text', null);
+      self.clear();
     }, 500);
+  },
+  clear: function() {
+    this.set('text', null);
   }
 });
 

@@ -43,11 +43,15 @@ App.searchController = Ember.ArrayController.create({
 
     return results;
   }.property('query'),
-
   notFound: function() {
     var query = this.get('query') || '';
     return query != '' && !this.get('hits');
-  }.property('query', 'hits')
+  }.property('query', 'hits'),
+  hideClip: function() {
+    if (!this.get('hits')) {
+      App.clip.hide();
+    }
+  }.observes('hits')
 });
 
 App.SearchFormView = Ember.View.extend({

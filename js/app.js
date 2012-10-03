@@ -82,5 +82,21 @@ App.BoyView = Ember.View.extend({
   })
 });
 
+App.message = Ember.Object.create({
+  text: null,
+
+  notice: function(message) {
+    var self = this;
+    self.set('text', message);
+    setTimeout(function() {
+      self.set('text', null);
+    }, 500);
+  }
+});
+
 App.clip = new ZeroClipboard.Client();
+App.clip.addEventListener('complete', function(client, text) {
+  App.message.notice('Copyied!');
+});
 App.clipGlued = false;
+

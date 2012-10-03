@@ -49,19 +49,21 @@
 </div>
 
 <div class="container">
-  {{#view App.SearchView}}
+{{#view App.SearchView}}
   {{#unless query}}
-{{view Ember.View templateName="top"}}
+    {{view Ember.View templateName="top"}}
   {{/unless}}
+
   {{#if notFound}}
   <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>
+  {{else}}
+    <ul class="thumbnails">
+    {{#each controller}}
+      {{view App.BoyView contentBinding="this"}}
+    {{/each}}
+    </ul>
   {{/if}}
-  <ul class="thumbnails">
-  {{#each controller}}
-    {{view App.BoyView contentBinding="this"}}
-  {{/each}}
-  </ul>
-  {{/view}}
+{{/view}}
 </div>
 </script>
 

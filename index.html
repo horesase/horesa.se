@@ -22,6 +22,13 @@
 </head>
 <body>
 
+<script data-template-name="top" type="text/x-handlebars">
+    <div class="hero-unit">
+      <h1>"Hore-sase" Github.</h1>
+      <p>Paste "hore-sase" boys on your projects. At the speed of light.</p>
+    </div>
+</script>
+
 <script type="text/x-handlebars">
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -44,10 +51,7 @@
 <div class="container">
   {{#view App.SearchView}}
   {{#unless query}}
-    <div class="hero-unit">
-      <h1>"Hore-sase" Github.</h1>
-      <p>Paste "hore-sase" boys on your projects. At the speed of light.</p>
-    </div>
+{{view Ember.View templateName="top"}}
   {{/unless}}
   {{#if notFound}}
   <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>

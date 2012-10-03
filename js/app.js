@@ -8,7 +8,7 @@ App.Jigokuno = Ember.Object.extend({
     return this.get('character').toLowerCase();
   }.property('character'),
   markdown: function() {
-    return this.get('image'); // FIXME
+    return '![jigokuno ' + this.get('id') + '](' + this.get('image') + ')';
   }.property('image')
 });
 App.Jigokuno.reopenClass({

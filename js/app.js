@@ -22,11 +22,16 @@ App.Jigokuno.reopenClass({
 
     var self = this;
     var queryLower = query.toLowerCase();
-    return this.data.filter(function(item, index) {
+    var filtered = this.data.filter(function(item, index) {
       return self.isSubstring(item.get('titleLower'), queryLower)
           || self.isSubstring(item.get('characterLower'), queryLower)
           || item.id == query; // FIXME
     });
+    var sorted = filtered.sort(function(a, b) {
+      return b.eid - a.eid;
+    });
+
+    return sorted;
   },
   isSubstring: function(str, query) {
     return str.indexOf(query) >= 0;

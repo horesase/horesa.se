@@ -29,6 +29,7 @@
       <a class="brand" href="/">horesa.se</a>
       {{#view App.SearchFormView}}
         {{view Ember.TextField classNames="search-query" valueBinding="query"}}
+        <div class="icon-search"></div>
         {{#if hits}}<span class="badge badge-info">{{hits}}</span>{{/if}}
       {{/view}}
       <p class="navbar-text pull-right">

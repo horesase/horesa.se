@@ -101,7 +101,7 @@ App.message = Ember.Object.create({
 
 App.clip = new ZeroClipboard.Client();
 App.clip.addEventListener('complete', function(client, text) {
-  App.message.notice('Copyied!');
+  App.message.notice('Copied!');
 });
 App.clipGlued = false;
 

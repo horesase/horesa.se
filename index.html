@@ -42,8 +42,8 @@
 
 <div class="container">
   {{#view App.SearchView}}
-  {{#if query}}
-  <div class="alert alert-info">Searching '<strong>{{query}}</strong>'</div>
+  {{#if notFound}}
+  <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>
   {{/if}}
   <ul class="thumbnails">
   {{#each controller}}

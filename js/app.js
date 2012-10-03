@@ -42,7 +42,12 @@ App.searchController = Ember.ArrayController.create({
     this.set('hits', results.length > 0 ? results.length : null);
 
     return results;
-  }.property('query')
+  }.property('query'),
+
+  notFound: function() {
+    var query = this.get('query') || '';
+    return query != '' && !this.get('hits');
+  }.property('query', 'hits')
 });
 
 App.SearchFormView = Ember.View.extend({

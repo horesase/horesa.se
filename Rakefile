@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 
-JSON_URL = 'https://raw.github.com/june29/horesase-boys/master/boys.json'
+JSON_URL = 'https://raw.github.com/june29/horesase-boys/master/meigens.json'
 
 task :default => :update
 

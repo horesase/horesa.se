@@ -165,13 +165,14 @@ App.MeigensView = Ember.View.extend({
         if (!target) {
           return;
         }
+        var image = $('img.meigen', target)[0];
         var content = view.get('content');
         var text = content.get('markdown');
         App.clip.setText(text);
         if (App.clipGlued) {
-          App.clip.reposition(target);
+          App.clip.reposition(image);
         } else {
-          App.clip.glue(target);
+          App.clip.glue(image);
           App.clipGlued = true;
         }
       }

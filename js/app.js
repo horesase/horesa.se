@@ -120,16 +120,15 @@ App.SearchView = Ember.View.extend({
   controller: App.searchController
 });
 
-
-App.BoysView = Ember.View.extend({
+App.MeigensView = Ember.View.extend({
   tagName: 'ul',
   classNames: 'thumbnails'.w(),
   template: Ember.Handlebars.compile('{{#each controller}}' +
-    '{{view view.BoyView contentBinding="this"}}' +
+    '{{view view.MeigenView contentBinding="this"}}' +
     '{{/each}}'),
 
-  BoyView: Ember.View.extend({
-    templateName: 'boy',
+  MeigenView: Ember.View.extend({
+    templateName: 'meigen',
     tagName: 'li',
     classNames: 'span4',
     content: null,
@@ -137,8 +136,8 @@ App.BoysView = Ember.View.extend({
     eventManager: Ember.Object.create({
       mouseEnter: function(e, view) {
         var target = e.target;
-        if (target.className != "thumbnail boy-thumbnail") {
-          target = $(e.target).parents('div.boy-thumbnail')[0];
+        if (target.className != "thumbnail meigen-thumbnail") {
+          target = $(e.target).parents('div.meigen-thumbnail')[0];
         }
         if (!target) {
           return;

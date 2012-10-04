@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/screen.css">
 
-<script data-template-name="boy" type="text/x-handlebars">
-<div class="thumbnail boy-thumbnail">
-<img class="boy" {{bindAttr src="image"}}>
+<script data-template-name="meigen" type="text/x-handlebars">
+<div class="thumbnail meigen-thumbnail">
+<img class="meigen" {{bindAttr src="image"}}>
 <div>
   <p class="title">{{title}}</p>
   <p class="metadata">
@@ -34,7 +34,7 @@
 <div class="span4"><h1>Paste.</h1></div>
 </div>
 
-{{view App.BoysView contentBinding="controller"}}
+{{view App.MeigensView contentBinding="controller"}}
 </script>
 </head>
 <body>
@@ -73,7 +73,7 @@
         Click to copy to clipboard!
       </div>
     {{/if}}
-    {{view App.BoysView contentBinding="controller"}}
+    {{view App.MeigensView contentBinding="controller"}}
 
     {{#if isSnipped}}
       <div class="alert alert-warning">

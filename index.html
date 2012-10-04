@@ -75,7 +75,10 @@ Benefit.
   <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>
   {{else}}
     {{#if query}}
-      <div class="alert alert-info">Click to copy to clipboard!</div>
+      <div class="alert alert-info">
+        <strong>Tip:</strong>
+        Click to copy to clipboard!
+      </div>
     {{/if}}
     <ul class="thumbnails">
     {{#each controller}}

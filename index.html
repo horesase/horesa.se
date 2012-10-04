@@ -46,6 +46,7 @@
       {{#view App.SearchFormView}}
         {{view Ember.TextField classNames="search-query" valueBinding="query"}}
         <div class="icon-search"></div>
+        <a href {{action resetQuery}}><div class="icon-remove"></div></a>
         {{#if hits}}<span class="badge badge-info">{{hits}}</span>{{/if}}
       {{/view}}
       <p class="navbar-text pull-right">

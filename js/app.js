@@ -116,6 +116,9 @@ App.SearchFormView = Ember.View.extend({
   },
   submit: function(event) {
     event.preventDefault();
+  },
+  resetQuery: function() {
+    this.get('controller').set('query', null);
   }
 });
 

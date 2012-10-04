@@ -7,11 +7,19 @@ App.Jigokuno = Ember.Object.extend({
   characterLower: function() {
     return this.get('character').toLowerCase();
   }.property('character'),
+  bodyLower: function() {
+    return (this.get('body') || '').toLowerCase();
+  }.property('body'),
   markdown: function() {
     return '[![' +this.escapeAlt(this.get('alt')) + '](' + this.get('image') + ')](' + this.get('entryUrl') + ')';
   }.property('image'),
   alt: function() {
-    return this.get('id') + ' ' + this.get('title'); // TODO Use body if exists
+    var body = this.get('body');
+    if (body) {
+      return body;
+    } else {
+      return this.get('id') + ' ' + this.get('title');
+    }
   }.property('id', 'title'),
   entryUrl: function() {
     return "http://jigokuno.com/?eid=" + this.get('eid');
@@ -34,7 +42,8 @@ App.Jigokuno.reopenClass({
     var filtered = this.data.filter(function(item, index) {
       return self.isSubstring(item.get('titleLower'), queryLower)
           || self.isSubstring(item.get('characterLower'), queryLower)
-          || item.id == query; // FIXME
+          || self.isSubstring(item.get('bodyLower'), queryLower)
+          || item.id == query;
     });
     var sorted = filtered.sort(function(a, b) {
       return b.eid - a.eid;

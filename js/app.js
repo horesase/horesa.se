@@ -28,7 +28,7 @@ App.Jigokuno = Ember.Object.extend({
     return str.replace(/\]/g, '\\]')
               .replace(/(?:\r|\n)+/g, ' ')
               .replace(/\s+$/, '');
-  },
+  }
 });
 
 App.Jigokuno.reopenClass({

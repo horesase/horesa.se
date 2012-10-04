@@ -176,7 +176,11 @@ App.MeigensView = Ember.View.extend({
           App.clipGlued = true;
         }
       }
-    })
+    }),
+    selectCharacter: function() {
+      var character = this.get('content').get('character');
+      App.searchController.set('query', character);
+    }
   })
 });
 

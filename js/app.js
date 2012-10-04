@@ -60,6 +60,22 @@ App.Jigokuno.reopenClass({
   },
   find: function(id) {
     return this.data.findProperty('id', id);
+  },
+  sample: function(n) {
+    var i;
+    var sampled = Ember.A([]);
+    var records = this.data;
+
+    for (i = 0; i < n; i++) {
+      if (records.length === 0) {
+        return sampled;
+      }
+      var selected = records[Math.floor(Math.random() * records.length)];
+      sampled.push(selected);
+      records = records.without(selected);
+    }
+
+    return sampled;
   }
 });
 
@@ -103,17 +119,24 @@ App.SearchFormView = Ember.View.extend({
   }
 });
 
-App.topController = Ember.ArrayController.create({
-  content: Ember.A([
-                   App.Jigokuno.find(786),
-                   App.Jigokuno.find(537),
-                   App.Jigokuno.find(295)
-  ])
-});
+App.topController = Ember.ArrayController.extend({
+  numberOfMeigens: 3,
+  content: [],
+  init: function() {
+    this.resample();
+  },
+  resample: function() {
+    this.set('content', App.Jigokuno.sample(this.numberOfMeigens));
+  }
+}).create();
 
 App.TopView = Ember.View.extend({
   controller: App.topController,
-  templateName: 'top'
+  templateName: 'top',
+
+  resample: function() {
+    this.get('controller').resample();
+  }
 });
 
 App.SearchView = Ember.View.extend({

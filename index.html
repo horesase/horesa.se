@@ -32,11 +32,7 @@
 <div class="span4"><h1>Paste.</h1></div>
 </div>
 
-<ul class="thumbnails">
-{{#each controller}}
-{{view App.BoyView contentBinding="this"}}
-{{/each}}
-</ul>
+{{view App.BoysView contentBinding="controller"}}
 </script>
 </head>
 <body>
@@ -75,11 +71,7 @@
         Click to copy to clipboard!
       </div>
     {{/if}}
-    <ul class="thumbnails">
-    {{#each controller}}
-      {{view App.BoyView contentBinding="this"}}
-    {{/each}}
-    </ul>
+    {{view App.BoysView contentBinding="controller"}}
 
     {{#if isSnipped}}
       <div class="alert alert-warning">

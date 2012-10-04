@@ -120,31 +120,40 @@ App.SearchView = Ember.View.extend({
   controller: App.searchController
 });
 
-App.BoyView = Ember.View.extend({
-  templateName: 'boy',
-  tagName: 'li',
-  classNames: 'span4',
-  content: null,
 
-  eventManager: Ember.Object.create({
-    mouseEnter: function(e, view) {
-      var target = e.target;
-      if (target.className != "thumbnail boy-thumbnail") {
-        target = $(e.target).parents('div.boy-thumbnail')[0];
+App.BoysView = Ember.View.extend({
+  tagName: 'ul',
+  classNames: 'thumbnails'.w(),
+  template: Ember.Handlebars.compile('{{#each controller}}' +
+    '{{view view.BoyView contentBinding="this"}}' +
+    '{{/each}}'),
+
+  BoyView: Ember.View.extend({
+    templateName: 'boy',
+    tagName: 'li',
+    classNames: 'span4',
+    content: null,
+
+    eventManager: Ember.Object.create({
+      mouseEnter: function(e, view) {
+        var target = e.target;
+        if (target.className != "thumbnail boy-thumbnail") {
+          target = $(e.target).parents('div.boy-thumbnail')[0];
+        }
+        if (!target) {
+          return;
+        }
+        var content = view.get('content');
+        var text = content.get('markdown');
+        App.clip.setText(text);
+        if (App.clipGlued) {
+          App.clip.reposition(target);
+        } else {
+          App.clip.glue(target);
+          App.clipGlued = true;
+        }
       }
-      if (!target) {
-        return;
-      }
-      var content = view.get('content');
-      var text = content.get('markdown');
-      App.clip.setText(text);
-      if (App.clipGlued) {
-        App.clip.reposition(target);
-      } else {
-        App.clip.glue(target);
-        App.clipGlued = true;
-      }
-    }
+    })
   })
 });
 

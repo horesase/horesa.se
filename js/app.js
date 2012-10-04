@@ -30,6 +30,7 @@ App.Jigokuno = Ember.Object.extend({
               .replace(/\s+$/, '');
   },
 });
+
 App.Jigokuno.reopenClass({
   data: Ember.A(window.boys.map(function(entry) {
     return App.Jigokuno.create(entry);

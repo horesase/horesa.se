@@ -25,9 +25,9 @@ App.Jigokuno = Ember.Object.extend({
     return "http://jigokuno.com/?eid=" + this.get('eid');
   }.property('eid'),
   escapeAlt: function(str) {
-    return str.replace(/\]/g, '\\]')
-              .replace(/(?:\r|\n)+/g, ' ')
-              .replace(/\s+$/, '');
+    return str.replace(/\]/g, '\\]').
+      replace(/(?:\r|\n)+/g, ' ').
+      replace(/\s+$/, '');
   }
 });
 
@@ -43,10 +43,10 @@ App.Jigokuno.reopenClass({
     var self = this;
     var queryLower = query.toLowerCase();
     var filtered = this.data.filter(function(item, index) {
-      return self.isSubstring(item.get('titleLower'), queryLower)
-          || self.isSubstring(item.get('characterLower'), queryLower)
-          || self.isSubstring(item.get('bodyLower'), queryLower)
-          || item.id == query;
+      return self.isSubstring(item.get('titleLower'), queryLower) ||
+        self.isSubstring(item.get('characterLower'), queryLower) ||
+        self.isSubstring(item.get('bodyLower'), queryLower) ||
+        item.id == query;
     });
     var sorted = filtered.sort(function(a, b) {
       return b.eid - a.eid;

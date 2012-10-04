@@ -92,13 +92,20 @@ App.BoyView = Ember.View.extend({
 
   eventManager: Ember.Object.create({
     mouseEnter: function(e, view) {
+      var target = e.target;
+      if (target.className != "thumbnail boy-thumbnail") {
+        target = $(e.target).parents('div.boy-thumbnail')[0];
+      }
+      if (!target) {
+        return;
+      }
       var content = view.get('content');
       var text = content.get('markdown');
       App.clip.setText(text);
       if (App.clipGlued) {
-        App.clip.reposition(e.target);
+        App.clip.reposition(target);
       } else {
-        App.clip.glue(e.target);
+        App.clip.glue(target);
         App.clipGlued = true;
       }
     }

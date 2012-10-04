@@ -8,8 +8,17 @@ App.Jigokuno = Ember.Object.extend({
     return this.get('character').toLowerCase();
   }.property('character'),
   markdown: function() {
-    return '![jigokuno ' + this.get('id') + '](' + this.get('image') + ')';
-  }.property('image')
+    return '[![' +this.escapeAlt(this.get('alt')) + '](' + this.get('image') + ')](' + this.get('entryUrl') + ')';
+  }.property('image'),
+  alt: function() {
+    return this.get('id') + ' ' + this.get('title'); // TODO Use body if exists
+  }.property('id', 'title'),
+  entryUrl: function() {
+    return "http://jigokuno.com/?eid=" + this.get('eid');
+  }.property('eid'),
+  escapeAlt: function(str) {
+    return str.replace(']', '\\]').replace(/\r|\n/, '');
+  },
 });
 App.Jigokuno.reopenClass({
   data: Ember.A(window.boys.map(function(entry) {

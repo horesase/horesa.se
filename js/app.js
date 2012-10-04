@@ -36,7 +36,7 @@ App.Jigokuno.reopenClass({
     return App.Jigokuno.create(entry);
   })),
   search: function(query, limit) {
-    if (!query || query == "") {
+    if (!query || query === "") {
       return [];
     }
 
@@ -78,7 +78,7 @@ App.searchController = Ember.ArrayController.create({
   }.property('data'),
   notFound: function() {
     var query = this.get('query') || '';
-    return query != '' && !this.get('hits');
+    return query !== '' && !this.get('hits');
   }.property('query', 'hits'),
   hideClip: function() {
     if (!this.get('hits')) {

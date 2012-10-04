@@ -34,7 +34,7 @@ App.Jigokuno.reopenClass({
   data: Ember.A(window.boys.map(function(entry) {
     return App.Jigokuno.create(entry);
   })),
-  search: function(query) {
+  search: function(query, limit) {
     if (!query || query == "") {
       return [];
     }
@@ -50,8 +50,9 @@ App.Jigokuno.reopenClass({
     var sorted = filtered.sort(function(a, b) {
       return b.eid - a.eid;
     });
+    var limited = limit ? sorted.slice(0, limit) : sorted;
 
-    return sorted;
+    return {hits: filtered.length, records: limited};
   },
   isSubstring: function(str, query) {
     return str.indexOf(query) >= 0;
@@ -60,14 +61,17 @@ App.Jigokuno.reopenClass({
 
 App.searchController = Ember.ArrayController.create({
   query: null,
-  hits: null,
+  limit: 3*40,
 
+  data: function() {
+    return App.Jigokuno.search(this.get('query'), this.get('limit'));
+  }.property('query', 'limit'),
+  hits: function() {
+    return this.get('data').hits;
+  }.property('data'),
   content: function() {
-    var results = App.Jigokuno.search(this.get('query'));
-    this.set('hits', results.length > 0 ? results.length : null);
-
-    return results;
-  }.property('query'),
+    return this.get('data').records;
+  }.property('data'),
   notFound: function() {
     var query = this.get('query') || '';
     return query != '' && !this.get('hits');
@@ -76,7 +80,11 @@ App.searchController = Ember.ArrayController.create({
     if (!this.get('hits')) {
       App.clip.hide();
     }
-  }.observes('hits')
+  }.observes('hits'),
+  isSnipped: function() {
+    var hits = this.get('hits');
+    return hits && hits > this.get('limit');
+  }.property('hits', 'limit')
 });
 
 App.SearchFormView = Ember.View.extend({

@@ -85,6 +85,13 @@ Benefit.
       {{view App.BoyView contentBinding="this"}}
     {{/each}}
     </ul>
+
+    {{#if isSnipped}}
+      <div class="alert alert-warning">
+        <strong>Note:</strong>
+        Not all results are displayed because found too many.
+      </div>
+    {{/if}}
   {{/if}}
 {{/view}}
 

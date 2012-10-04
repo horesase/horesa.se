@@ -27,21 +27,16 @@
 </div>
 
 <div class="row">
-<div class="span4">
-<h1>Search</h1>
-By query.
-</div>
-<div class="span4">
-<h1>Copy</h1>
-Just click your favorite. Markdown snippet is copied.
-</div>
-<div class="span4">
-<h1>Paste</h1>
-Benefit.
-</div>
+<div class="span4"><h1>Search.</h1></div>
+<div class="span4"><h1>Copy.</h1></div>
+<div class="span4"><h1>Paste.</h1></div>
 </div>
 
-
+<ul class="thumbnails">
+{{#each controller}}
+{{view App.BoyView contentBinding="this"}}
+{{/each}}
+</ul>
 </script>
 </head>
 <body>
@@ -68,7 +63,7 @@ Benefit.
 <div class="container">
 {{#view App.SearchView}}
   {{#unless query}}
-    {{view Ember.View templateName="top"}}
+    {{view App.TopView}}
   {{/unless}}
 
   {{#if notFound}}

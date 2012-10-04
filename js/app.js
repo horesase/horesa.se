@@ -56,6 +56,9 @@ App.Jigokuno.reopenClass({
   },
   isSubstring: function(str, query) {
     return str.indexOf(query) >= 0;
+  },
+  find: function(id) {
+    return this.data.findProperty('id', id);
   }
 });
 
@@ -97,6 +100,19 @@ App.SearchFormView = Ember.View.extend({
   submit: function(event) {
     event.preventDefault();
   }
+});
+
+App.topController = Ember.ArrayController.create({
+  content: Ember.A([
+                   App.Jigokuno.find(786),
+                   App.Jigokuno.find(537),
+                   App.Jigokuno.find(295)
+  ])
+});
+
+App.TopView = Ember.View.extend({
+  controller: App.topController,
+  templateName: 'top'
 });
 
 App.SearchView = Ember.View.extend({

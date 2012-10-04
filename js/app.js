@@ -25,7 +25,9 @@ App.Jigokuno = Ember.Object.extend({
     return "http://jigokuno.com/?eid=" + this.get('eid');
   }.property('eid'),
   escapeAlt: function(str) {
-    return str.replace(']', '\\]').replace(/\r|\n/, '');
+    return str.replace(/\]/g, '\\]')
+              .replace(/(?:\r|\n)+/g, ' ')
+              .replace(/\s+$/, '');
   },
 });
 App.Jigokuno.reopenClass({

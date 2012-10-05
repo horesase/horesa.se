@@ -46,28 +46,30 @@
 </script>
 
 <script data-template-name="search" type="text/x-handlebars">
-  {{#unless query}}
-    {{view App.TopView}}
-  {{/unless}}
+{{#unless query}}
+  {{view App.TopView}}
+{{/unless}}
 
-  {{#if notFound}}
-  <div class="alert alert-error">Not found for '<strong>{{query}}</strong>'</div>
-  {{else}}
-    {{#if query}}
-      <div class="alert alert-info">
-        <strong>Tip:</strong>
-        Click image to copy to clipboard!
-      </div>
-    {{/if}}
-    {{view App.MeigensView contentBinding="controller"}}
-
-    {{#if isSnipped}}
-      <div class="alert alert-warning">
-        <strong>Note:</strong>
-        Not all results are displayed because found too many.
-      </div>
-    {{/if}}
+{{#if notFound}}
+<div class="alert alert-error">
+  Not found for '<strong>{{query}}</strong>'
+</div>
+{{else}}
+  {{#if query}}
+    <div class="alert alert-info">
+      <strong>Tip:</strong>
+      Click image to copy to clipboard!
+    </div>
   {{/if}}
+  {{view App.MeigensView contentBinding="controller"}}
+
+  {{#if isSnipped}}
+    <div class="alert alert-warning">
+      <strong>Note:</strong>
+      Not all results are displayed because found too many.
+    </div>
+  {{/if}}
+{{/if}}
 </script>
 
 <script data-template-name="navbar" type="text/x-handlebars">

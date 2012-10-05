@@ -32,8 +32,13 @@
 
 {{view App.MeigensView contentBinding="controller"}}
 
-<a href {{action refresh}} class="btn btn-primary pull-right"><i class="icon-refresh icon-white"></i> Refresh</a>
-<div class="clearfix"></div>
+<div class="row">
+<div class="span2 offset5">
+  <button {{action refresh}} class="btn btn-large btn-block btn-primary">
+    <i class="icon-refresh icon-white"></i> Refresh
+  </button>
+</div>
+</div>
 </script>
 </head>
 <body>

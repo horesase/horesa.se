@@ -51,7 +51,8 @@
 {{else}}
   {{#if notFound}}
   <div class="alert alert-error">
-    Not found for '<strong>{{query}}</strong>'
+    <strong>Not found</strong> for '{{query}}'
+    {{#if cidFacet}} of {{character}}{{/if}}
   </div>
   {{else}}
     {{#if query}}

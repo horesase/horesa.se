@@ -66,6 +66,33 @@
   {{/if}}
 </script>
 
+<script data-template-name="footer" type="text/x-handlebars">
+<footer>
+<p>
+Inspired by
+
+<a href="http://jigokuno.com/">地獄のミサワの「女に惚れさす名言集」</a>,
+
+<a href="https://speakerdeck.com/u/kenchan/p/social-coding-its-not-unusual-in-esm?slide=28">"Social Coding", It's Not Unusual in ESM</a>,
+
+<a href="http://matome.naver.jp/odai/2134910435868769101">Githubで使える地獄のミサワまとめ</a>
+
+and
+
+<a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a>.
+</p>
+
+<p>
+Lovingly made by
+<a href="https://twitter.com/kei_s">@kei_s</a>,
+<a href="https://twitter.com/june29">@june29</a> and
+<a href="https://twitter.com/darashi">@darashi</a>
+in Tokyo and Sapporo.
+</p>
+
+</footer>
+</script>
+
 </head>
 <body>
 
@@ -93,30 +120,7 @@
 {{view App.SearchView}}
 
 <hr>
-<footer>
-<p>
-Inspired by
-
-<a href="http://jigokuno.com/">地獄のミサワの「女に惚れさす名言集」</a>,
-
-<a href="https://speakerdeck.com/u/kenchan/p/social-coding-its-not-unusual-in-esm?slide=28">"Social Coding", It's Not Unusual in ESM</a>,
-
-<a href="http://matome.naver.jp/odai/2134910435868769101">Githubで使える地獄のミサワまとめ</a>
-
-and
-
-<a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a>.
-</p>
-
-<p>
-Lovingly made by
-<a href="https://twitter.com/kei_s">@kei_s</a>,
-<a href="https://twitter.com/june29">@june29</a> and
-<a href="https://twitter.com/darashi">@darashi</a>
-in Tokyo and Sapporo.
-</p>
-
-</footer>
+{{view Ember.View templateName="footer"}}
 </div>
 
 </script>

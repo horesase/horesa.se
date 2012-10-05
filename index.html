@@ -11,16 +11,18 @@
 
 <script data-template-name="meigen" type="text/x-handlebars">
 <div class="thumbnail meigen-thumbnail">
-<img class="meigen" {{bindAttr src="image"}}>
-<div>
-  <p class="title">{{title}}</p>
-  <p class="metadata">
-    <a target="_blank" {{bindAttr href="entryUrl"}}>惚れさせ{{id}}</a>
-    <a href {{action selectCharacter}}>
-      <span class="label label-info character"><i class="icon-user icon-white"></i> {{character}}</span>
-    </a>
-  </p>
-</div>
+  <img class="meigen" {{bindAttr src="image"}}>
+  <div>
+    <p class="title">{{title}}</p>
+    <p class="metadata">
+      <a target="_blank" {{bindAttr href="entryUrl"}}>惚れさせ{{id}}</a>
+      <a href {{action selectCharacter}}>
+        <span class="label label-info character">
+          <i class="icon-user icon-white"></i> {{character}}
+        </span>
+      </a>
+    </p>
+  </div>
 </div>
 </script>
 

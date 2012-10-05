@@ -126,9 +126,9 @@ App.topController = Ember.ArrayController.extend({
   numberOfMeigens: 3,
   content: [],
   init: function() {
-    this.resample();
+    this.refresh();
   },
-  resample: function() {
+  refresh: function() {
     this.set('content', App.Jigokuno.sample(this.numberOfMeigens));
   }
 }).create();
@@ -137,8 +137,8 @@ App.TopView = Ember.View.extend({
   controller: App.topController,
   templateName: 'top',
 
-  resample: function() {
-    this.get('controller').resample();
+  refresh: function() {
+    this.get('controller').refresh();
   }
 });
 

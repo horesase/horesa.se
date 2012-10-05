@@ -66,6 +66,27 @@
   {{/if}}
 </script>
 
+<script data-template-name="navbar" type="text/x-handlebars">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">horesa.se</a>
+      {{#view App.SearchFormView}}
+        {{view Ember.TextField classNames="search-query" valueBinding="query"}}
+        <div class="icon-search"></div>
+        <a href {{action resetQuery}}><div class="icon-remove"></div></a>
+        {{#if hits}}<span class="badge badge-info">{{hits}}</span>{{/if}}
+      {{/view}}
+      <p class="navbar-text pull-right">
+      {{#if App.message.text}}
+        <span class="label label-important">{{App.message.text}}</span>
+      {{/if}}
+      </p>
+    </div>
+  </div>
+</div>
+</script>
+
 <script data-template-name="footer" type="text/x-handlebars">
 <footer>
 <p>
@@ -97,24 +118,7 @@ in Tokyo and Sapporo.
 <body>
 
 <script type="text/x-handlebars">
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="/">horesa.se</a>
-      {{#view App.SearchFormView}}
-        {{view Ember.TextField classNames="search-query" valueBinding="query"}}
-        <div class="icon-search"></div>
-        <a href {{action resetQuery}}><div class="icon-remove"></div></a>
-        {{#if hits}}<span class="badge badge-info">{{hits}}</span>{{/if}}
-      {{/view}}
-      <p class="navbar-text pull-right">
-      {{#if App.message.text}}
-        <span class="label label-important">{{App.message.text}}</span>
-      {{/if}}
-      </p>
-    </div>
-  </div>
-</div>
+{{view Ember.View templateName="navbar"}}
 
 <div class="container">
 {{view App.SearchView}}

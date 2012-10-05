@@ -35,18 +35,18 @@ App.Meigen.reopenClass({
   data: Ember.A(window.meigens.map(function(entry) {
     return App.Meigen.create(entry);
   })),
-  search: function(query, limit) {
-    if (!query || query === "") {
-      return [];
-    }
-
+  search: function(query, limit, cidFacet) {
     var self = this;
-    var queryLower = query.toLowerCase();
+    var queryLower = (query || '').toLowerCase();
     var filtered = this.data.filter(function(item, index) {
-      return self.isSubstring(item.get('titleLower'), queryLower) ||
-        self.isSubstring(item.get('characterLower'), queryLower) ||
-        self.isSubstring(item.get('bodyLower'), queryLower) ||
-        item.id == query;
+      return (!cidFacet || item.get('cid') === cidFacet) &&
+        (!query || (
+          self.isSubstring(item.get('titleLower'), queryLower) ||
+          self.isSubstring(item.get('characterLower'), queryLower) ||
+          self.isSubstring(item.get('bodyLower'), queryLower) ||
+          item.id == query
+        )
+      );
     });
     var sorted = filtered.sort(function(a, b) {
       return b.eid - a.eid;
@@ -82,10 +82,18 @@ App.Meigen.reopenClass({
 App.searchController = Ember.ArrayController.create({
   query: null,
   limit: 3*40,
+  cidFacet: null,
+  character: null,
 
   data: function() {
-    return App.Meigen.search(this.get('query'), this.get('limit'));
-  }.property('query', 'limit'),
+    var query = this.get('query');
+    var cidFacet = this.get('cidFacet');
+    var limit = this.get('limit');
+    if ((!query || query === '') && !cidFacet) {
+      return [];
+    }
+    return App.Meigen.search(query, limit, cidFacet);
+  }.property('query', 'limit', 'cidFacet'),
   hits: function() {
     return this.get('data').hits;
   }.property('data'),
@@ -104,7 +112,11 @@ App.searchController = Ember.ArrayController.create({
   isSnipped: function() {
     var hits = this.get('hits');
     return hits && hits > this.get('limit');
-  }.property('hits', 'limit')
+  }.property('hits', 'limit'),
+  isSearchWorking: function() {
+    var query = this.get('query') || '';
+    return !!((query !== '') || this.get('cidFacet'));
+  }.property('query', 'cidFacet')
 });
 
 App.SearchFormView = Ember.View.extend({
@@ -119,6 +131,10 @@ App.SearchFormView = Ember.View.extend({
   },
   resetQuery: function() {
     this.get('controller').set('query', null);
+  },
+  resetCidFacet: function() {
+    this.get('controller').set('cidFacet', null);
+    this.get('controller').set('character', null);
   }
 });
 
@@ -183,7 +199,9 @@ App.MeigensView = Ember.View.extend({
     }),
     selectCharacter: function() {
       var character = this.get('content').get('character');
-      App.searchController.set('query', character);
+      var cid = this.get('content').get('cid');
+      App.searchController.set('cidFacet', cid);
+      App.searchController.set('character', character);
     }
   })
 });

@@ -46,30 +46,30 @@
 </script>
 
 <script data-template-name="search" type="text/x-handlebars">
-{{#unless query}}
+{{#unless isSearchWorking}}
   {{view App.TopView}}
-{{/unless}}
-
-{{#if notFound}}
-<div class="alert alert-error">
-  Not found for '<strong>{{query}}</strong>'
-</div>
 {{else}}
-  {{#if query}}
-    <div class="alert alert-info">
-      <strong>Tip:</strong>
-      Click image to copy to clipboard!
-    </div>
-  {{/if}}
-  {{view App.MeigensView contentBinding="controller"}}
+  {{#if notFound}}
+  <div class="alert alert-error">
+    Not found for '<strong>{{query}}</strong>'
+  </div>
+  {{else}}
+    {{#if query}}
+      <div class="alert alert-info">
+        <strong>Tip:</strong>
+        Click image to copy to clipboard!
+      </div>
+    {{/if}}
+    {{view App.MeigensView contentBinding="controller"}}
 
-  {{#if isSnipped}}
-    <div class="alert alert-warning">
-      <strong>Note:</strong>
-      Not all results are displayed because found too many.
-    </div>
+    {{#if isSnipped}}
+      <div class="alert alert-warning">
+        <strong>Note:</strong>
+        Not all results are displayed because found too many.
+      </div>
+    {{/if}}
   {{/if}}
-{{/if}}
+{{/unless}}
 </script>
 
 <script data-template-name="navbar" type="text/x-handlebars">
@@ -81,7 +81,15 @@
         {{view Ember.TextField classNames="search-query" valueBinding="query"}}
         <div class="icon-search"></div>
         <a href {{action resetQuery}}><div class="icon-remove"></div></a>
-        {{#if hits}}<span class="badge badge-info">{{hits}}</span>{{/if}}
+        {{#if cidFacet}}
+            <span class="label label-info" style="cursor: pointer;" {{action resetCidFacet}}>
+              <i class="icon-user icon-white"></i> {{character}}
+              <i class="icon-remove icon-white"></i>
+            </span>
+        {{/if}}
+        {{#if isSearchWorking}}
+          <span class="badge badge-info">{{hits}}</span>
+        {{/if}}
       {{/view}}
       <p class="navbar-text pull-right">
       {{#if App.message.text}}

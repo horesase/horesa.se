@@ -43,7 +43,7 @@ img.meigen {
   background-image: url("http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png");
 }
 
-.navbar-search .icon-remove {
+.navbar-search div.icon-remove {
   position: absolute;
   top: 7px;
   left: 240px;

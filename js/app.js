@@ -142,7 +142,7 @@ App.TopView = Ember.View.extend({
   }
 });
 
-App.SearchView = Ember.View.extend({
+App.SearchResultsView = Ember.View.extend({
   controller: App.searchController,
   templateName: 'search'
 });

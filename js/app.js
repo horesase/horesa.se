@@ -1,6 +1,6 @@
 var App = Ember.Application.create();
 
-App.Jigokuno = Ember.Object.extend({
+App.Meigen = Ember.Object.extend({
   titleLower: function() {
     return this.get('title').toLowerCase();
   }.property('title'),
@@ -31,9 +31,9 @@ App.Jigokuno = Ember.Object.extend({
   }
 });
 
-App.Jigokuno.reopenClass({
-  data: Ember.A(window.boys.map(function(entry) {
-    return App.Jigokuno.create(entry);
+App.Meigen.reopenClass({
+  data: Ember.A(window.meigens.map(function(entry) {
+    return App.Meigen.create(entry);
   })),
   search: function(query, limit) {
     if (!query || query === "") {
@@ -84,7 +84,7 @@ App.searchController = Ember.ArrayController.create({
   limit: 3*40,
 
   data: function() {
-    return App.Jigokuno.search(this.get('query'), this.get('limit'));
+    return App.Meigen.search(this.get('query'), this.get('limit'));
   }.property('query', 'limit'),
   hits: function() {
     return this.get('data').hits;
@@ -129,7 +129,7 @@ App.topController = Ember.ArrayController.extend({
     this.refresh();
   },
   refresh: function() {
-    this.set('content', App.Jigokuno.sample(this.numberOfMeigens));
+    this.set('content', App.Meigen.sample(this.numberOfMeigens));
   }
 }).create();
 

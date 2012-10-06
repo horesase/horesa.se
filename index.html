@@ -61,11 +61,11 @@
   <p class="tagline">
     Put "horesase" boys on your projects. At the speed of light.
   </p>
-  <p class="social-widgets">
+  <div class="social-widgets">
     <iframe src="http://ghbtns.com/github-btn.html?user=june29&repo=horesase-boys&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="62px" height="20px"></iframe>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://horesa.se/" data-hashtags="horesase">Tweet</a>
-    <div id="fb-root"></div>
-  </p>
+    <div class="fb-like" data-href="http://horesa.se/" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div>
+  </div>
 </div>
 
 {{view App.MeigensView contentBinding="controller" class="top-meigens"}}
@@ -179,7 +179,7 @@ in Tokyo and Sapporo.
 
 </head>
 <body>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -187,5 +187,6 @@ in Tokyo and Sapporo.
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=426004164123781";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </body>
 </html>

@@ -190,6 +190,9 @@ App.MeigensView = Ember.View.extend({
         var content = view.get('content');
         var text = content.get('markdown');
         App.clip.setText(text);
+        // Pass additional information via ZeroClipboard.Client()
+        App.clip.eventSummary =
+          content.get('id') + ' ' + content.get('title');
         if (App.clipGlued) {
           App.clip.reposition(image);
         } else {
@@ -233,6 +236,7 @@ App.NotificationView = Ember.View.extend({
 App.clip = new ZeroClipboard.Client();
 App.clip.addEventListener('complete', function(client, text) {
   App.notificationController.flash('Copied!');
+  _gaq.push(['_trackEvent', 'Meigen', 'Copy', client.eventSummary]);
 });
 App.clipGlued = false;
 

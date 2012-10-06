@@ -206,6 +206,7 @@ App.MeigensView = Ember.View.extend({
       var cid = this.get('content').get('cid');
       App.searchController.set('cidFacet', cid);
       App.searchController.set('character', character);
+      _gaq.push(['_trackEvent', 'Character', 'Facet', '' + cid + ' ' + character]);
     }
   })
 });

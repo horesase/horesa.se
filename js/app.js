@@ -160,7 +160,7 @@ App.TopView = Ember.View.extend({
 
 App.SearchResultsView = Ember.View.extend({
   controller: App.searchController,
-  templateName: 'search'
+  templateName: 'search-result'
 });
 
 App.MeigensView = Ember.View.extend({

@@ -6,6 +6,18 @@ body {
   padding-top: 60px;
 }
 
+.hero-unit {
+  background: #eee url(../img/hero_background.png) top right no-repeat scroll;
+  transition: background-position 0.4s ease-out;
+  -moz-transition: background-position 0.4s ease-out;
+  -webkit-transition: background-position 0.4s ease-out;
+  -o-transition: background-position 0.4s ease-out;
+}
+
+.hero-unit:hover {
+  background-position: right -70px;
+}
+
 img.meigen {
   width: 240px;
   height: 320px;

@@ -55,6 +55,15 @@ img.meigen.hover {
   background-image: url("http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png");
 }
 
+.cid-facet-remove {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.hit-count {
+  margin-left: 10px;
+}
+
 footer p {
   text-align: center;
 }

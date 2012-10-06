@@ -110,13 +110,13 @@
         <div class="icon-search"></div>
         <a href {{action resetQuery}}><div class="icon-remove"></div></a>
         {{#if cidFacet}}
-          <span class="label label-info" style="cursor: pointer;" {{action resetCidFacet}}>
+          <span class="label label-info cid-facet-remove" {{action resetCidFacet}}>
             <i class="icon-user icon-white"></i> {{character}}
             <i class="icon-remove icon-white"></i>
           </span>
         {{/if}}
         {{#if isSearchWorking}}
-          <span class="badge badge-info">{{hits}}</span>
+          <span class="badge badge-info hit-count">{{hits}}</span>
         {{/if}}
       {{/view}}
       {{view App.NotificationView}}

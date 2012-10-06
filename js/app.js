@@ -241,7 +241,7 @@ App.NotificationView = Ember.View.extend({
     didInsertElement: function(){
       var self = this;
       setTimeout(function() {
-        self.$().fadeOut('slow', function() {
+        self.$().fadeOut('fast', function() {
           self.get('parentView').controller.set('content', null);
         });
       }, 500);

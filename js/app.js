@@ -155,6 +155,7 @@ App.TopView = Ember.View.extend({
 
   refresh: function() {
     this.get('controller').refresh();
+    _gaq.push(['_trackEvent', 'Top', 'Refresh']);
   }
 });
 

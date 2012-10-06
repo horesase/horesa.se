@@ -9,11 +9,6 @@ body {
 img.meigen {
   width: 240px;
   height: 320px;
-  border: solid 1px #fff;
-}
-
-img.meigen.hover {
-  border: solid 1px #888;
 }
 
 .meigen-thumbnail {

@@ -83,19 +83,19 @@
         <div class="icon-search"></div>
         <a href {{action resetQuery}}><div class="icon-remove"></div></a>
         {{#if cidFacet}}
-            <span class="label label-info" style="cursor: pointer;" {{action resetCidFacet}}>
-              <i class="icon-user icon-white"></i> {{character}}
-              <i class="icon-remove icon-white"></i>
-            </span>
+          <span class="label label-info" style="cursor: pointer;" {{action resetCidFacet}}>
+            <i class="icon-user icon-white"></i> {{character}}
+            <i class="icon-remove icon-white"></i>
+          </span>
         {{/if}}
         {{#if isSearchWorking}}
           <span class="badge badge-info">{{hits}}</span>
         {{/if}}
       {{/view}}
       <p class="navbar-text pull-right">
-      {{#if App.message.text}}
-        <span class="label label-important">{{App.message.text}}</span>
-      {{/if}}
+        {{#if App.message.text}}
+          <span class="label label-important">{{App.message.text}}</span>
+        {{/if}}
       </p>
     </div>
   </div>

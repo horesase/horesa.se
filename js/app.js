@@ -168,7 +168,7 @@ App.ClippableButtonView = Ember.View.extend({
   tagName: 'button',
   copyText: null,
   eventSummary: null,
-  classNames: ['btn'],
+  classNames: ['btn btn-mini'],
 
   eventManager: Ember.Object.create({
     mouseEnter: function(event, view) {

@@ -81,7 +81,7 @@ App.Meigen.reopenClass({
 
 App.searchController = Ember.ArrayController.create({
   query: null,
-  limit: 3*40,
+  limit: 3*20,
   cidFacet: null,
   character: null,
 

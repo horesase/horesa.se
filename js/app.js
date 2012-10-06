@@ -26,7 +26,7 @@ App.Meigen = Ember.Object.extend({
   }.property('eid'),
   escapeAlt: function(str) {
     return str.replace(/\]/g, '\\]').
-      replace(/(?:\r|\n)+/g, ' ').
+      replace(/(?:\r|\n|　)+/g, ' ').
       replace(/\s+$/, '');
   }
 });

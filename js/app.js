@@ -184,7 +184,10 @@ App.ClippableButtonView = Ember.View.extend({
         App.clipGlued = true;
       }
     }
-  })
+  }),
+  willDestroyElement: function() {
+    App.clip.hide();
+  }
 });
 
 App.MeigensView = Ember.View.extend({

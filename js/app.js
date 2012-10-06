@@ -206,24 +206,32 @@ App.MeigensView = Ember.View.extend({
   })
 });
 
-App.message = Ember.Object.create({
-  text: null,
+App.notificationController = Ember.ObjectController.create({
+  content: null,
 
   flash: function(message) {
     var self = this;
-    self.set('text', message);
+    self.set('content', message);
     setTimeout(function() {
-      self.clear();
+      self.set('content', null);
     }, 500);
-  },
-  clear: function() {
-    this.set('text', null);
   }
+});
+
+App.NotificationView = Ember.View.extend({
+  tagName: 'p',
+  controller: App.notificationController,
+  classNames: ['navbar-text', 'pull-right'],
+
+  template: Ember.Handlebars.compile(
+    '{{#if content}}' +
+    '<span class="label label-important">{{content}}</span>' +
+    '{{/if}}')
 });
 
 App.clip = new ZeroClipboard.Client();
 App.clip.addEventListener('complete', function(client, text) {
-  App.message.flash('Copied!');
+  App.notificationController.flash('Copied!');
 });
 App.clipGlued = false;
 

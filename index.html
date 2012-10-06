@@ -92,11 +92,7 @@
           <span class="badge badge-info">{{hits}}</span>
         {{/if}}
       {{/view}}
-      <p class="navbar-text pull-right">
-        {{#if App.message.text}}
-          <span class="label label-important">{{App.message.text}}</span>
-        {{/if}}
-      </p>
+      {{view App.NotificationView}}
     </div>
   </div>
 </div>

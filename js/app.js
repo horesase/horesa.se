@@ -155,6 +155,12 @@ App.TopView = Ember.View.extend({
 
   refresh: function() {
     this.get('controller').refresh();
+    $('.hero-unit').animate({'background-position-y': '-100'}, 20)
+                   .delay(500)
+                   .animate({'background-position-y': '0'}, 100,
+                       function() {
+                           $('.hero-unit').removeAttr("style")
+                       });
     _gaq.push(['_trackEvent', 'Top', 'Refresh']);
   }
 });

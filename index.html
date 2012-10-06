@@ -27,9 +27,9 @@
 {{view Ember.View templateName="navbar"}}
 <div class="container">
 {{outlet}}
-</div>
 <hr>
 {{view Ember.View templateName="footer"}}
+</div>
 </script>
 
 <script data-template-name="home" type="text/x-handlebars">
@@ -62,11 +62,11 @@
 {{view App.MeigensView contentBinding="controller" class="top-meigens"}}
 
 <div class="row">
-<div class="span2 offset5">
-  <button {{action refresh}} class="btn btn-large btn-block btn-primary">
-    <i class="icon-refresh icon-white"></i> Refresh
-  </button>
-</div>
+  <div class="span2 offset5">
+    <button {{action refresh}} class="btn btn-large btn-block btn-primary">
+      <i class="icon-refresh icon-white"></i> Refresh
+    </button>
+  </div>
 </div>
 </script>
 

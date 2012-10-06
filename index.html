@@ -9,6 +9,26 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/screen.css">
 
+<script src="js/lib/jquery-1.8.2.min.js"></script>
+<script src="js/lib/handlebars-1.0.rc.1.js"></script>
+<script src="js/lib/ZeroClipboard.min.js"></script>
+<script src="js/lib/ember-latest.js"></script>
+<script src="js/meigens.js"></script>
+<script src="js/app.js"></script>
+
+<script data-template-name="application" type="text/x-handlebars">
+{{view Ember.View templateName="navbar"}}
+<div class="container">
+{{outlet}}
+</div>
+<hr>
+{{view Ember.View templateName="footer"}}
+</script>
+
+<script data-template-name="home" type="text/x-handlebars">
+{{view App.SearchResultsView}}
+</script>
+
 <script data-template-name="meigen" type="text/x-handlebars">
 <div class="thumbnail meigen-thumbnail">
   <img class="meigen" {{bindAttr src="image"}}>
@@ -146,23 +166,5 @@ in Tokyo and Sapporo.
 
 </head>
 <body>
-
-<script type="text/x-handlebars">
-{{view Ember.View templateName="navbar"}}
-
-<div class="container">
-{{view App.SearchResultsView}}
-
-<hr>
-{{view Ember.View templateName="footer"}}
-</div>
-</script>
-
-  <script src="js/lib/jquery-1.8.2.min.js"></script>
-  <script src="js/lib/handlebars-1.0.rc.1.js"></script>
-  <script src="js/lib/ZeroClipboard.min.js"></script>
-  <script src="js/lib/ember-latest.js"></script>
-  <script src="js/meigens.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>

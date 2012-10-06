@@ -235,3 +235,24 @@ App.clip.addEventListener('complete', function(client, text) {
 });
 App.clipGlued = false;
 
+App.ApplicationController = Ember.Controller.extend({
+});
+
+App.ApplicationView = Ember.View.extend({
+  templateName: 'application'
+});
+
+App.HomeView = Ember.View.extend({
+  templateName: 'home'
+});
+
+App.Router = Ember.Router.extend({
+  root: Ember.Route.extend({
+    home: Ember.Route.extend({
+      route: '/',
+      connectOutlets: function(router) {
+        router.get('applicationController').connectOutlet('home');
+      }
+    })
+  })
+});

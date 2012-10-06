@@ -104,9 +104,9 @@
       {{#view App.SearchFormView}}
         {{view Ember.TextField classNames="search-query" valueBinding="query"}}
         <div class="icon-search"></div>
-        <div class="icon-remove" {{action resetQuery}}></div>
+        <div {{action resetQuery}} class="icon-remove"></div>
         {{#if cidFacet}}
-          <span class="label label-info cid-facet-remove" {{action resetCidFacet}}>
+          <span {{action resetCidFacet}} class="label label-info cid-facet-remove">
             <i class="icon-user icon-white"></i> {{character}}
             <i class="icon-remove icon-white"></i>
           </span>

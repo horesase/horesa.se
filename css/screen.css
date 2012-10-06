@@ -13,8 +13,18 @@ img.meigen {
 
 .meigen-thumbnail {
   overflow: hidden;
-  height: 440px;
-  padding-top: 24px;
+  height: 450px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.meigen-thumbnail .clippable-buttons {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.meigen-thumbnail .clippable-buttons button {
+  width: 100px;
 }
 
 .meigen-thumbnail .title {

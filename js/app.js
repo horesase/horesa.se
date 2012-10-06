@@ -164,6 +164,31 @@ App.SearchResultsView = Ember.View.extend({
   templateName: 'search-result'
 });
 
+App.ClippableButtonView = Ember.View.extend({
+  tagName: 'button',
+  labelText: null,
+  copyText: null,
+  eventSummary: null,
+  classNames: ['btn'],
+  template: Ember.Handlebars.compile('{{view.labelText}}'),
+
+  eventManager: Ember.Object.create({
+    mouseEnter: function(event, view) {
+      var target = event.target;
+      var text = view.get('copyText');
+      App.clip.setText(text);
+      // Pass additional information via ZeroClipboard.Client()
+      App.clip.eventSummary = view.get('eventSummary');
+      if (App.clipGlued) {
+        App.clip.reposition(target);
+      } else {
+        App.clip.glue(target);
+        App.clipGlued = true;
+      }
+    }
+  })
+});
+
 App.MeigensView = Ember.View.extend({
   tagName: 'ul',
   classNames: 'thumbnails'.w(),
@@ -177,30 +202,10 @@ App.MeigensView = Ember.View.extend({
     classNames: 'span4',
     content: null,
 
-    eventManager: Ember.Object.create({
-      mouseEnter: function(e, view) {
-        var target = e.target;
-        if (target.className != "thumbnail meigen-thumbnail") {
-          target = $(e.target).parents('div.meigen-thumbnail')[0];
-        }
-        if (!target) {
-          return;
-        }
-        var image = $('img.meigen', target)[0];
-        var content = view.get('content');
-        var text = content.get('markdown');
-        App.clip.setText(text);
-        // Pass additional information via ZeroClipboard.Client()
-        App.clip.eventSummary =
-          content.get('id') + ' ' + content.get('title');
-        if (App.clipGlued) {
-          App.clip.reposition(image);
-        } else {
-          App.clip.glue(image);
-          App.clipGlued = true;
-        }
-      }
-    }),
+    eventSummary: function() {
+      var content = this.get('content');
+      return '' + content.get('id') + ' ' + content.get('title');
+    }.property('id', 'title'),
     selectCharacter: function() {
       var character = this.get('content').get('character');
       var cid = this.get('content').get('cid');

@@ -47,6 +47,8 @@
         <i class="icon-user icon-white"></i> {{character}}
       </span>
     </p>
+    {{view App.ClippableButtonView labelText="markdown" copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}
+    {{view App.ClippableButtonView labelText="URL" copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}
   </div>
 </div>
 </script>
@@ -84,7 +86,7 @@
       <strong>Tip:</strong>
       Click image to copy to clipboard.
     </div>
-    {{view App.MeigensView contentBinding="controller"}}
+    {{view App.MeigensView contentBinding="controller" dataClip="hello"}}
 
     {{#if isSnipped}}
       <div class="alert alert-warning">

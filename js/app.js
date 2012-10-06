@@ -166,11 +166,9 @@ App.SearchResultsView = Ember.View.extend({
 
 App.ClippableButtonView = Ember.View.extend({
   tagName: 'button',
-  labelText: null,
   copyText: null,
   eventSummary: null,
   classNames: ['btn'],
-  template: Ember.Handlebars.compile('{{view.labelText}}'),
 
   eventManager: Ember.Object.create({
     mouseEnter: function(event, view) {

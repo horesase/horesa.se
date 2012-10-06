@@ -47,8 +47,8 @@
         <i class="icon-user icon-white"></i> {{character}}
       </span>
     </p>
-    {{view App.ClippableButtonView labelText="markdown" copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}
-    {{view App.ClippableButtonView labelText="URL" copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}
+    {{#view App.ClippableButtonView copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}Markdown{{/view}}
+    {{#view App.ClippableButtonView copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}URL{{/view}}
   </div>
 </div>
 </script>

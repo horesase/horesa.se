@@ -41,8 +41,8 @@
 <script data-template-name="meigen" type="text/x-handlebars">
 <div class="thumbnail meigen-thumbnail">
   <div class="clippable-buttons">
-      {{#view App.ClippableButtonView copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}Markdown{{/view}}
-      {{#view App.ClippableButtonView copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}URL{{/view}}
+      {{#view App.ClippableButtonView copyTextBinding="view.content.markdown" eventSummaryBinding="view.eventSummary"}}Markdown{{/view}}
+      {{#view App.ClippableButtonView copyTextBinding="view.content.image" eventSummaryBinding="view.eventSummary"}}URL{{/view}}
   </div>
   <img class="meigen" {{bindAttr src="view.content.image"}}>
   <div>

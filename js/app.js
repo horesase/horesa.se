@@ -167,6 +167,7 @@ App.TopView = Ember.View.extend({
     if (window.FB) {
       window.FB.XFBML.parse();
     }
+    twttr.widgets.load();
   }
 });
 

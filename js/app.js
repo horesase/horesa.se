@@ -123,9 +123,6 @@ App.SearchFormView = Ember.View.extend({
   tagName: 'form',
   controller: App.searchController,
   classNames: ['navbar-search', 'pull-left'],
-  didInsertElement: function() {
-    Ember.$('form input[type="text"]').focus();
-  },
   submit: function(event) {
     event.preventDefault();
   },

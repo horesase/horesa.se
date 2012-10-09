@@ -253,7 +253,7 @@ App.NotificationView = Ember.View.extend({
           self.get('parentView').controller.set('content', null);
         });
       }, 500);
-    },
+    }
   })
 });
 

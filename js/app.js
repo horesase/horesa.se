@@ -13,12 +13,9 @@ App.Meigen = Ember.Object.extend({
                                  this.get('entryUrl'));
   }.property('image'),
   alt: function() {
+    var title = '惚れさせ%@ 「%@」'.fmt(this.get('id'), this.get('title'));
     var body = this.get('body');
-    if (body) {
-      return body;
-    } else {
-      return this.get('id') + ' ' + this.get('title');
-    }
+    return [title, body].join(' ');
   }.property('id', 'title'),
   entryUrl: function() {
     return "http://jigokuno.com/?eid=" + this.get('eid');

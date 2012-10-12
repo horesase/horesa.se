@@ -8,7 +8,9 @@ App.Meigen = Ember.Object.extend({
     });
   }.property('title', 'character', 'body'),
   markdown: function() {
-    return '[![' +this.escapeAlt(this.get('alt')) + '](' + this.get('image') + ')](' + this.get('entryUrl') + ')';
+    return '[![%@](%@)](%@)'.fmt(this.escapeAlt(this.get('alt')),
+                                 this.get('image'),
+                                 this.get('entryUrl'));
   }.property('image'),
   alt: function() {
     var body = this.get('body');

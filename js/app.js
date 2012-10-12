@@ -233,10 +233,10 @@ App.NotificationView = Ember.View.extend({
 
   template: Ember.Handlebars.compile(
     '{{#if content}}' +
-    '{{view view.LabelView contentBinding="this"}}' +
+    '{{view view.labelView contentBinding="this"}}' +
     '{{/if}}'),
 
-  LabelView: Ember.View.extend({
+  labelView: Ember.View.extend({
     tagName: 'span',
     classNames: ['label', 'label-important'],
     content: null,

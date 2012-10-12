@@ -27,6 +27,10 @@ img.meigen {
   height: 320px;
 }
 
+.meigen-thumbnail .image-wrapper {
+  text-align: center;
+}
+
 .meigen-thumbnail {
   overflow: hidden;
   height: 440px;

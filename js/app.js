@@ -1,15 +1,12 @@
 var App = Ember.Application.create();
 
 App.Meigen = Ember.Object.extend({
-  titleLower: function() {
-    return this.get('title').toLowerCase();
-  }.property('title'),
-  characterLower: function() {
-    return this.get('character').toLowerCase();
-  }.property('character'),
-  bodyLower: function() {
-    return (this.get('body') || '').toLowerCase();
-  }.property('body'),
+  searchables: function() {
+    var self = this;
+    return ['title', 'character', 'body'].map(function(propertyName) {
+      return (self.get(propertyName) || '').toLowerCase();
+    });
+  }.property('title', 'character', 'body'),
   markdown: function() {
     return '[![' +this.escapeAlt(this.get('alt')) + '](' + this.get('image') + ')](' + this.get('entryUrl') + ')';
   }.property('image'),
@@ -40,12 +37,11 @@ App.Meigen.reopenClass({
     var queryLower = (query || '').toLowerCase();
     var filtered = this.data.filter(function(item, index) {
       return (!cidFacet || item.get('cid') === cidFacet) &&
-        (!query || (
-          self.isSubstring(item.get('titleLower'), queryLower) ||
-          self.isSubstring(item.get('characterLower'), queryLower) ||
-          self.isSubstring(item.get('bodyLower'), queryLower) ||
+        (!query ||
+          item.get('searchables').some(function(text) {
+            return self.isSubstring(text, queryLower);
+          }) ||
           item.id == query
-        )
       );
     });
     var sorted = filtered.sort(function(a, b) {

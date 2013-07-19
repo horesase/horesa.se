@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 
-JSON_URL = 'http://cloud.github.com/downloads/june29/horesase-boys/meigens.json'
+JSON_URL = 'http://horesase-boys.herokuapp.com/meigens.json'
 
 task :default => :update
 

@@ -1,10 +1,14 @@
 var App = Ember.Application.create();
 
+function normalize(str) {
+  return unorm.nfkc(str).toLowerCase();
+}
+
 App.Meigen = Ember.Object.extend({
   searchables: function() {
     var self = this;
     return ['title', 'character', 'body'].map(function(propertyName) {
-      return (self.get(propertyName) || '').toLowerCase();
+      return normalize(self.get(propertyName) || '');
     });
   }.property('title', 'character', 'body'),
   markdown: function() {
@@ -33,12 +37,12 @@ App.Meigen.reopenClass({
   })),
   search: function(query, limit, cidFacet) {
     var self = this;
-    var queryLower = (query || '').toLowerCase();
+    var normalizedQuery = normalize(query || '');
     var filtered = this.data.filter(function(item, index) {
       return (!cidFacet || item.get('cid') === cidFacet) &&
         (!query ||
           item.get('searchables').some(function(text) {
-            return self.isSubstring(text, queryLower);
+            return self.isSubstring(text, normalizedQuery);
           }) ||
           item.id == query
       );

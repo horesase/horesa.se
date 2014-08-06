@@ -22,7 +22,7 @@ App.Meigen = Ember.Object.extend({
     return [title, body].join(' ');
   }.property('id', 'title'),
   entryUrl: function() {
-    return "http://jigokuno.com/?eid=" + this.get('eid');
+    return 'http://jigokuno.com/eid_' + this.get('eid') + '.html';
   }.property('eid'),
   escapeAlt: function(str) {
     return str.replace(/\]/g, '\\]').
